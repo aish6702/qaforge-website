@@ -141,7 +141,17 @@
   @media(min-width:700px){ .pricing-grid{ grid-template-columns:repeat(3,1fr); } }
   .price-card{
     border:1px solid var(--line); border-radius:12px; padding:30px 26px; background:var(--charcoal-soft);
+    cursor:pointer; transition:border-color .2s ease, transform .2s ease, background .2s ease;
   }
+  .price-card:hover{ transform:translateY(-3px); border-color:rgba(232,98,44,0.5); }
+  .price-card.selected{ border-color:var(--ember); background:rgba(232,98,44,0.08); box-shadow:0 0 0 1px var(--ember); }
+  .price-card .select-btn{
+    margin-top:18px; width:100%; padding:10px; border-radius:6px; border:1px solid var(--line);
+    background:transparent; color:var(--cream); font-weight:600; font-size:13.5px; cursor:pointer;
+    font-family:inherit; transition:background .2s ease, border-color .2s ease;
+  }
+  .price-card.selected .select-btn{ background:var(--ember); border-color:var(--ember); color:#fff; }
+  .price-card:not(.selected) .select-btn:hover{ border-color:var(--steel-light); }
   .price-card.featured{ border-color:var(--ember); position:relative; }
   .price-card.featured::before{
     content:'MOST BOOKED'; position:absolute; top:-12px; left:26px; background:var(--ember); color:#fff;
@@ -294,17 +304,18 @@
       <p>Hourly available on request — most first engagements start with a fixed-scope audit.</p>
     </div>
     <div class="pricing-grid">
-      <div class="price-card">
+      <div class="price-card" onclick="selectPlan(this, 'Quick Audit')">
         <h3>QUICK AUDIT</h3>
         <div class="amount">$100<span> / project</span></div>
         <ul>
           <li>Manual exploratory pass</li>
           <li>Up to 3 core user flows</li>
           <li>Prioritized bug report</li>
-          <li>48-hour turnaround</li>
+          <li>Delivered within 2 business days</li>
         </ul>
+        <button class="select-btn" type="button">Select Plan</button>
       </div>
-      <div class="price-card featured">
+      <div class="price-card featured" onclick="selectPlan(this, 'Full Coverage')">
         <h3>FULL COVERAGE</h3>
         <div class="amount">$250<span> / project</span></div>
         <ul>
@@ -313,8 +324,9 @@
           <li>Detailed report + screen recordings</li>
           <li>One free retest round</li>
         </ul>
+        <button class="select-btn" type="button">Select Plan</button>
       </div>
-      <div class="price-card">
+      <div class="price-card" onclick="selectPlan(this, 'Automation Setup')">
         <h3>AUTOMATION SETUP</h3>
         <div class="amount">$300+<span> / project</span></div>
         <ul>
@@ -323,8 +335,18 @@
           <li>Handover docs for your team</li>
           <li>Scoped after a quick call</li>
         </ul>
+        <button class="select-btn" type="button">Select Plan</button>
       </div>
     </div>
+    <script>
+      function selectPlan(card, planName){
+        document.querySelectorAll('.price-card').forEach(function(c){ c.classList.remove('selected'); });
+        card.classList.add('selected');
+        var note = document.getElementById('selected-plan-note');
+        if(note){ note.textContent = 'Selected plan: ' + planName; note.style.display = 'block'; }
+        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+      }
+    </script>
   </div>
 </section>
 
@@ -332,12 +354,24 @@
   <div class="wrap">
     <div class="contact-box">
       <h2>Let's forge something reliable.</h2>
+      <p id="selected-plan-note" style="display:none; color:var(--ember); font-weight:600; font-size:15px; margin-bottom:14px;"></p>
       <p>Tell us what you're building — we'll reply with a scoped plan, usually within a day.</p>
       <div class="contact-links">
-        <a href="mailto:qaforge02@gmail.com" class="cta-btn">Email Us</a>
+        <button onclick="copyEmail(this)" class="cta-btn" style="border:none; cursor:pointer; font-family:inherit;">Copy Email Address</button>
         <a href="https://www.linkedin.com/in/muhammad-aish-ayub-122169266/" class="btn-outline" target="_blank" rel="noopener">LinkedIn</a>
       </div>
       <p style="margin-top:18px; font-size:14px;">Or reach out directly: <a href="mailto:qaforge02@gmail.com" style="color:var(--ember); font-weight:600;">qaforge02@gmail.com</a></p>
+      <script>
+        function copyEmail(btn){
+          navigator.clipboard.writeText('qaforge02@gmail.com').then(function(){
+            var original = btn.textContent;
+            btn.textContent = 'Copied! ✓';
+            setTimeout(function(){ btn.textContent = original; }, 2000);
+          }).catch(function(){
+            window.location.href = 'mailto:qaforge02@gmail.com';
+          });
+        }
+      </script>
     </div>
   </div>
 </section>
