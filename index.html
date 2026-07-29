@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QAforge — Quality Assurance, Forged Right</title>
+<meta name="description" content="QAforge delivers remote manual, automation, and API testing services for SaaS and web products.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#1B1F24;
+    --charcoal-soft:#262B32;
+    --cream:#F5F1EA;
+    --ember:#E8622C;
+    --ember-deep:#C74A1E;
+    --spark:#FDBA74;
+    --steel:#4A5568;
+    --steel-light:#8B95A3;
+    --line: rgba(245,241,234,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--charcoal);
+    color:var(--cream);
+    font-family:'Inter', -apple-system, sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.brand{ font-family:'Space Grotesk', sans-serif; }
+  a{color:inherit; text-decoration:none;}
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 24px; }
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(27,31,36,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 24px; }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; }
+  .brand svg{ width:30px; height:30px; }
+  .brand .forge{ color:var(--ember); }
+  .navlinks{ display:flex; gap:28px; font-size:14px; font-weight:500; color:var(--steel-light); }
+  .navlinks a:hover{ color:var(--cream); }
+  .navlinks{ display:none; }
+  @media(min-width:760px){ .navlinks{ display:flex; } }
+  .cta-btn{
+    background:var(--ember); color:#fff; padding:10px 20px; border-radius:6px;
+    font-weight:600; font-size:14px; white-space:nowrap;
+    box-shadow:0 4px 14px rgba(232,98,44,0.25);
+  }
+  .cta-btn:hover{ background:var(--ember-deep); }
+
+  /* HERO */
+  .hero{ padding:100px 0 90px; position:relative; }
+  .hero-grid{ display:grid; gap:40px; align-items:center; }
+  @media(min-width:860px){ .hero-grid{ grid-template-columns:1.1fr 0.9fr; } }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--spark); font-size:13px; font-weight:600; letter-spacing:2px;
+    text-transform:uppercase; margin-bottom:20px;
+  }
+  .eyebrow::before{ content:''; width:8px; height:8px; background:var(--ember); border-radius:50%; display:inline-block; }
+  .hero h1{ font-size:clamp(36px,6vw,58px); font-weight:700; line-height:1.08; margin-bottom:20px; }
+  .hero h1 span{ color:var(--ember); }
+  .hero p{ color:var(--steel-light); font-size:18px; max-width:480px; margin-bottom:32px; }
+  .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn-outline{
+    border:1px solid var(--line); padding:10px 22px; border-radius:6px; font-weight:600; font-size:14px;
+  }
+  .btn-outline:hover{ border-color:var(--steel-light); }
+
+  .hero-visual{ position:relative; display:flex; justify-content:center; }
+  .hero-visual svg{ width:260px; height:260px; filter:drop-shadow(0 20px 40px rgba(232,98,44,0.18)); }
+
+  /* SECTION HEADERS */
+  .section{ padding:90px 0; border-top:1px solid var(--line); }
+  .section-head{ max-width:560px; margin-bottom:56px; }
+  .section-head .tag{ color:var(--ember); font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+  .section-head h2{ font-size:clamp(28px,4vw,38px); margin-top:12px; }
+  .section-head p{ color:var(--steel-light); margin-top:14px; font-size:16px; }
+
+  /* SERVICES */
+  .services-grid{ display:grid; gap:24px; }
+  @media(min-width:700px){ .services-grid{ grid-template-columns:repeat(3,1fr); } }
+  .service-card{
+    background:var(--charcoal-soft); border:1px solid var(--line); border-radius:12px; padding:28px;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .service-card:hover{ transform:translateY(-4px); border-color:rgba(232,98,44,0.4); }
+  .service-card .num{ color:var(--ember); font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:14px; }
+  .service-card h3{ font-size:19px; margin:14px 0 10px; }
+  .service-card p{ color:var(--steel-light); font-size:14.5px; }
+
+  /* PROCESS */
+  .process{ display:grid; gap:0; position:relative; }
+  @media(min-width:760px){ .process{ grid-template-columns:repeat(4,1fr); } }
+  .stage{ padding:24px 20px 24px 0; position:relative; }
+  .stage .heat{ width:36px; height:36px; border-radius:50%; background:var(--ember); display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk'; font-weight:700; color:#fff; font-size:15px; margin-bottom:16px;}
+  .stage h3{ font-size:16px; margin-bottom:8px; }
+  .stage p{ color:var(--steel-light); font-size:14px; }
+  .stage:not(:last-child)::after{
+    content:''; position:absolute; top:18px; left:100%; width:100%; height:2px;
+    background:linear-gradient(90deg, var(--ember), transparent); display:none;
+  }
+  @media(min-width:760px){ .stage:not(:last-child)::after{ display:block; width:60%; } }
+
+  /* PROOF OF WORK */
+  .proof-card{
+    background:var(--charcoal-soft); border:1px solid var(--line); border-radius:14px;
+    padding:32px; display:grid; gap:24px;
+  }
+  @media(min-width:700px){ .proof-card{ grid-template-columns:1fr 1fr; } }
+  .proof-card h3{ font-size:20px; margin-bottom:10px; }
+  .proof-card p{ color:var(--steel-light); font-size:14.5px; margin-bottom:16px; }
+  .stack-tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .stack-tags span{
+    background:rgba(232,98,44,0.12); color:var(--spark); border:1px solid rgba(232,98,44,0.3);
+    padding:4px 10px; border-radius:20px; font-size:12.5px; font-weight:600;
+  }
+
+  /* PRICING */
+  .pricing-grid{ display:grid; gap:20px; }
+  @media(min-width:700px){ .pricing-grid{ grid-template-columns:repeat(3,1fr); } }
+  .price-card{
+    border:1px solid var(--line); border-radius:12px; padding:30px 26px; background:var(--charcoal-soft);
+  }
+  .price-card.featured{ border-color:var(--ember); position:relative; }
+  .price-card.featured::before{
+    content:'MOST BOOKED'; position:absolute; top:-12px; left:26px; background:var(--ember); color:#fff;
+    font-size:11px; font-weight:700; letter-spacing:1px; padding:4px 10px; border-radius:20px;
+  }
+  .price-card h3{ font-size:17px; color:var(--steel-light); font-weight:600; margin-bottom:10px; }
+  .price-card .amount{ font-family:'Space Grotesk'; font-size:34px; font-weight:700; margin-bottom:18px; }
+  .price-card .amount span{ font-size:14px; color:var(--steel-light); font-weight:400; }
+  .price-card ul{ list-style:none; }
+  .price-card li{ font-size:14px; color:var(--cream); padding:7px 0; border-top:1px solid var(--line); }
+  .price-card li:first-child{ border-top:none; }
+
+  /* CONTACT */
+  .contact-box{
+    background:linear-gradient(135deg, var(--charcoal-soft), var(--charcoal));
+    border:1px solid var(--line); border-radius:16px; padding:48px; text-align:center;
+  }
+  .contact-box h2{ font-size:clamp(26px,4vw,34px); margin-bottom:14px; }
+  .contact-box p{ color:var(--steel-light); max-width:460px; margin:0 auto 28px; }
+  .contact-links{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+  footer{ border-top:1px solid var(--line); padding:32px 0; }
+  .footer-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; color:var(--steel-light); font-size:13px; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#" class="brand">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <path d="M138 26 L150 4 L162 26 L150 18 Z" fill="#FDBA74"/>
+        <path d="M60 40 L240 40 L240 138 C240 205 175 245 150 262 C125 245 60 205 60 138 Z" fill="#1B1F24"/>
+        <path d="M104 142 L138 176 L200 100" fill="none" stroke="#F5F1EA" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      QA<span class="forge">forge</span>
+    </a>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#work">Proof of Work</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <a href="#contact" class="cta-btn">Book a Free Audit</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Remote QA & Testing Services</div>
+      <h1>Ship software that survives <span>contact with users.</span></h1>
+      <p>QAforge finds the bugs before your customers do — manual, automation, and API testing for SaaS teams that can't afford silent failures.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="cta-btn">Get a Free QA Audit</a>
+        <a href="#work" class="btn-outline">See Proof of Work</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <path d="M138 26 L150 4 L162 26 L150 18 Z" fill="#FDBA74"/>
+        <path d="M60 40 L240 40 L240 138 C240 205 175 245 150 262 C125 245 60 205 60 138 Z" fill="#1B1F24" stroke="#3A4149" stroke-width="2"/>
+        <path d="M104 142 L138 176 L200 100" fill="none" stroke="#F5F1EA" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">What We Do</div>
+      <h2>Three ways we forge quality into your product</h2>
+      <p>Pick one service or bundle all three — every engagement ends with a clear, actionable report, not just a pass/fail stamp.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="num">01</div>
+        <h3>Manual & Exploratory Testing</h3>
+        <p>Real human testers hunting for edge cases, broken flows, and UX friction your automated suite will never catch.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">02</div>
+        <h3>Automation Testing</h3>
+        <p>Selenium, Cypress, and Playwright suites built into your CI so regressions get caught before they reach production.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">03</div>
+        <h3>API Testing</h3>
+        <p>Postman/Newman collections validating contracts, edge cases, and failure states across your endpoints.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Our Process</div>
+      <h2>The forge, in four stages</h2>
+      <p>Every engagement moves through the same disciplined pass — no black boxes, no surprise invoices.</p>
+    </div>
+    <div class="process">
+      <div class="stage"><div class="heat">01</div><h3>Inspect</h3><p>We map your product, user flows, and highest-risk areas before writing a single test.</p></div>
+      <div class="stage"><div class="heat">02</div><h3>Test</h3><p>Manual and/or automated test execution against your build, tracked against real user paths.</p></div>
+      <div class="stage"><div class="heat">03</div><h3>Report</h3><p>A prioritized bug report with severity, repro steps, and screen recordings — not a spreadsheet dump.</p></div>
+      <div class="stage"><div class="heat">04</div><h3>Certify</h3><p>Retest fixes and sign off, or wire the suite into your CI for ongoing coverage.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Proof of Work</div>
+      <h2>Built to show the process, not just claim it</h2>
+      <p>Every service on this site is backed by an open, working example — not just a promise.</p>
+    </div>
+    <div class="proof-card">
+      <div>
+        <h3>QAShop</h3>
+        <p>An end-to-end QA automation reference project: Selenium with Page Object Model, Cypress e2e specs, Postman/Newman API tests, all wired into GitHub Actions CI.</p>
+        <div class="stack-tags">
+          <span>Selenium</span><span>Cypress</span><span>Postman/Newman</span><span>GitHub Actions</span>
+        </div>
+      </div>
+      <div>
+        <h3>What this proves</h3>
+        <p>The same automation stack, CI integration, and reporting discipline we bring to every client engagement — you can inspect the actual code before you hire us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Pricing</div>
+      <h2>Fixed-scope, so you know the cost upfront</h2>
+      <p>Hourly available on request — most first engagements start with a fixed-scope audit.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>QUICK AUDIT</h3>
+        <div class="amount">$100<span> / project</span></div>
+        <ul>
+          <li>Manual exploratory pass</li>
+          <li>Up to 3 core user flows</li>
+          <li>Prioritized bug report</li>
+          <li>48-hour turnaround</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <h3>FULL COVERAGE</h3>
+        <div class="amount">$250<span> / project</span></div>
+        <ul>
+          <li>Manual + API testing</li>
+          <li>Full user-flow coverage</li>
+          <li>Detailed report + screen recordings</li>
+          <li>One free retest round</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>AUTOMATION SETUP</h3>
+        <div class="amount">$300+<span> / project</span></div>
+        <ul>
+          <li>Cypress/Selenium test suite</li>
+          <li>CI integration (GitHub Actions)</li>
+          <li>Handover docs for your team</li>
+          <li>Scoped after a quick call</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <h2>Let's forge something reliable.</h2>
+      <p>Tell us what you're building — we'll reply with a scoped plan, usually within a day.</p>
+      <div class="contact-links">
+        <a href="mailto:qaforge02@gmail.com" class="cta-btn">qaforge02@gmail.com</a>
+        <a href="https://www.linkedin.com/in/muhammad-aish-ayub-122169266/" class="btn-outline" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" class="btn-outline">Upwork Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 QAforge. Founded by Muhammad Aish Ayub.</span>
+    <span>Quality assurance, forged right.</span>
+  </div>
+</footer>
+
+</body>
+</html>
