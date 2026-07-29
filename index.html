@@ -4,7 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QAforge — Quality Assurance, Forged Right</title>
-<meta name="description" content="QAforge delivers remote manual, automation, and API testing services for SaaS and web products.">
+<meta name="description" content="QAforge delivers remote manual, automation, and API testing services for SaaS teams that can't afford silent failures.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="QAforge — Quality Assurance, Forged Right">
+<meta property="og:description" content="Remote manual, automation, and API testing services for SaaS teams.">
+<meta property="og:url" content="https://aish6702.github.io/qaforge-website/">
+<meta property="og:image" content="https://aish6702.github.io/qaforge-website/thumbnail.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QAforge — Quality Assurance, Forged Right">
+<meta name="twitter:description" content="Remote manual, automation, and API testing services for SaaS teams.">
+<meta name="twitter:image" content="https://aish6702.github.io/qaforge-website/thumbnail.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -109,13 +122,14 @@
   @media(min-width:760px){ .stage:not(:last-child)::after{ display:block; width:60%; } }
 
   /* PROOF OF WORK */
+  .proof-grid{ display:grid; gap:24px; }
+  @media(min-width:760px){ .proof-grid{ grid-template-columns:repeat(3,1fr); } }
   .proof-card{
     background:var(--charcoal-soft); border:1px solid var(--line); border-radius:14px;
-    padding:32px; display:grid; gap:24px;
+    padding:28px; display:flex; flex-direction:column; gap:14px;
   }
-  @media(min-width:700px){ .proof-card{ grid-template-columns:1fr 1fr; } }
-  .proof-card h3{ font-size:20px; margin-bottom:10px; }
-  .proof-card p{ color:var(--steel-light); font-size:14.5px; margin-bottom:16px; }
+  .proof-card h3{ font-size:19px; }
+  .proof-card p{ color:var(--steel-light); font-size:14px; flex-grow:1; }
   .stack-tags{ display:flex; flex-wrap:wrap; gap:8px; }
   .stack-tags span{
     background:rgba(232,98,44,0.12); color:var(--spark); border:1px solid rgba(232,98,44,0.3);
@@ -246,17 +260,27 @@
       <h2>Built to show the process, not just claim it</h2>
       <p>Every service on this site is backed by an open, working example — not just a promise.</p>
     </div>
-    <div class="proof-card">
-      <div>
+    <div class="proof-grid">
+      <div class="proof-card">
         <h3>QAShop</h3>
         <p>An end-to-end QA automation reference project: Selenium with Page Object Model, Cypress e2e specs, Postman/Newman API tests, all wired into GitHub Actions CI.</p>
         <div class="stack-tags">
           <span>Selenium</span><span>Cypress</span><span>Postman/Newman</span><span>GitHub Actions</span>
         </div>
       </div>
-      <div>
-        <h3>What this proves</h3>
-        <p>The same automation stack, CI integration, and reporting discipline we bring to every client engagement — you can inspect the actual code before you hire us.</p>
+      <div class="proof-card">
+        <h3>AirlineOrderService</h3>
+        <p>A REST API built on C#/.NET with Kafka event streaming and NGINX — the same kind of backend our API testing service is built to validate.</p>
+        <div class="stack-tags">
+          <span>C# / .NET</span><span>REST API</span><span>Kafka</span><span>NGINX</span>
+        </div>
+      </div>
+      <div class="proof-card">
+        <h3>AI Document Tool</h3>
+        <p>A production document-processing tool (PDF/DOCX/image handling via the Anthropic API), shipped as both a script and a browser app — proof we test what we build, end to end.</p>
+        <div class="stack-tags">
+          <span>Python</span><span>Anthropic API</span><span>Web App</span>
+        </div>
       </div>
     </div>
   </div>
@@ -310,10 +334,10 @@
       <h2>Let's forge something reliable.</h2>
       <p>Tell us what you're building — we'll reply with a scoped plan, usually within a day.</p>
       <div class="contact-links">
-        <a href="mailto:qaforge02@gmail.com" class="cta-btn">qaforge02@gmail.com</a>
+        <a href="mailto:qaforge02@gmail.com" class="cta-btn">Email Us</a>
         <a href="https://www.linkedin.com/in/muhammad-aish-ayub-122169266/" class="btn-outline" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="#" class="btn-outline">Upwork Profile</a>
       </div>
+      <p style="margin-top:18px; font-size:14px;">Or reach out directly: <a href="mailto:qaforge02@gmail.com" style="color:var(--ember); font-weight:600;">qaforge02@gmail.com</a></p>
     </div>
   </div>
 </section>
